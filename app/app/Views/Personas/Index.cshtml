@@ -4,7 +4,7 @@
 }
 
 <h2>Index</h2>
-<input type="type" onclick="@Url.Content("~/Personas/Nuevo")" name="name" value="" />
+<a href="@Url.Content("~/Personas/Nuevo")">ir</a>
 
 <p>Cantidad de personas @Model.Count()</p>
 <div class="row">
@@ -14,13 +14,17 @@
 
 
         <div class="col-lg-4 jumbotron">
+            <div>
+                <a class="img-circle img-responsive"  href="@Url.Content(item.Imagen)">content</a>
+            </div>
             <h2>Getting started</h2>
             <p>
                 @item.Id
                 @item.Nombre
-                @item.Imagen
+               
             </p>
-            <img src="#" alt="Alternate Text" />
+            <img src="https://image.shutterstock.com/image-vector/pdf-icon-file-portable-text-260nw-1551599549.jpg" alt="Alternate Text" />
+            <a href="@Url.Content(item.Imagen)" class="btn btn-danger btn-block">ver documento </a>
             
             <p><a class="btn btn-default" href="@Url.Action("Vermas",new { id=item.Id})">Ver mas &raquo;</a></p>
 
@@ -29,3 +33,18 @@
 
     }
 </div>
+
+<ul class="nav">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">Active</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+    </li>
+</ul>

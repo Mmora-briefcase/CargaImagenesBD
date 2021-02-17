@@ -1,6 +1,7 @@
 ﻿using app.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -45,6 +46,38 @@ namespace app.Controllers
         [HttpPost]
         public ActionResult Nuevo(Persona model)
         {
+
+
+            try
+            {
+                var db = new cargaarchivostestEntities();
+                if (System.Web.HttpContext.Current.Request.Files.AllKeys.Any())
+                {
+                    var imagerequest = System.Web.HttpContext.Current.Request.Files["Imagen"];
+                    var ruta = Server.MapPath("~/Content/Archivos/");
+
+                    var nombrearchivo = imagerequest.FileName;
+
+                    //Guardar la imagen del request en la carpeta
+                    imagerequest.SaveAs(ruta + nombrearchivo);
+
+                    //Guardar la imagen del modelo con el nombre en base de datos
+
+                    //model.Imagen = "~/Archivos/" + imagerequest.FileName;
+                    model.Imagen = "~/Content/Archivos/" + nombrearchivo;
+
+
+                    db.Persona.Add(model);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                return Content(ex.Message);
+            }
 
             return View();
         }

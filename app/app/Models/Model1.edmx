@@ -15,7 +15,7 @@
           <Property Name="Poder" Type="varchar" MaxLength="50" />
           <Property Name="Debilidad" Type="varchar" MaxLength="50" />
           <Property Name="Universo" Type="varchar" MaxLength="50" />
-          <Property Name="Imagen" Type="varchar" MaxLength="50" />
+          <Property Name="Imagen" Type="varchar(max)" />
         </EntityType>
         <EntityContainer Name="cargaarchivostestModelStoreContainer">
           <EntitySet Name="Persona" EntityType="Self.Persona" Schema="dbo" store:Type="Tables" />
@@ -35,7 +35,7 @@
           <Property Name="Poder" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Debilidad" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Universo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="Imagen" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Imagen" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="cargaarchivostestEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Persona" EntityType="Self.Persona" />
