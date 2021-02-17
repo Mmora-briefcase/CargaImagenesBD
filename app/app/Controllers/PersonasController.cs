@@ -14,6 +14,11 @@ namespace app.Controllers
         public ActionResult Index()
         {
 
+            if (TempData["Mensaje"] != null)
+            {
+                ViewBag.mensaje = TempData["Mensaje"].ToString();
+            }
+
             var db = new cargaarchivostestEntities();
 
             var listado = from x in db.Persona
@@ -69,6 +74,7 @@ namespace app.Controllers
 
                     db.Persona.Add(model);
                     db.SaveChanges();
+                    TempData["Mensaje"] = "se cargaron los archivos";
                     return RedirectToAction("Index");
                 }
 

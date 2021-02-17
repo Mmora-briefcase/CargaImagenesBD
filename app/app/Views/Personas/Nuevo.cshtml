@@ -6,10 +6,10 @@
 
 <h2>Nuevo</h2>
 
-@using (Html.BeginForm("Nuevo","Personas",FormMethod.Post,new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Nuevo", "Personas", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Persona</h4>
         <hr />
@@ -55,10 +55,12 @@
         </div>
 
         <div class="form-group">
-           
+
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control",type="File" } })
-             
+
+                <input class="form-control" type="file" required autofocus inputmode="url" data-max-size="3000" id="Imagen" name="Imagen" value="subir archivo " />
+                @*@Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control", type = "File" } })*@
+
             </div>
         </div>
 
@@ -73,3 +75,51 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
+
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script>
+
+    $('input[type="file"]').on('change', function () {
+        var ext = $(this).val().split('.').pop();
+        if ($(this).val() != '') {
+            if (ext == "pdf") {
+              var r=  swal("La extensión es: " + ext + "  Desea Continuar ?" );
+                if (r== true) {
+                    if ($(this)[0].files[0].size > 1048576) {
+                        console.log("El documento excede el tamaño máximo");
+                        $('#modal-title').text('¡Precaución!');
+                        $('#modal-msg').html("Se solicita un archivo no mayor a 1MB. Por favor verifica.");
+                        $("#modal-gral").modal();
+                        $(this).val('');
+                    } else {
+                        $("#modal-gral").hide();
+                    }
+                }
+            }
+            else {
+                $(this).val('');
+
+
+                swal({
+                    title: "Alerta",
+                    text: "Extensión no permitida: " + ext,
+                    icon: "warning",
+                    buttons: true,
+                    dangerMode: true,
+                })
+                    .then((willDelete) => {
+                        if (willDelete) {
+                            swal("Regresado al Menu Principal, por favor utiliza una  Extensión PDF", {
+                                icon: "success",
+                            });
+                        } else {
+                            swal("Cerrando Ventana ");
+                        }
+                    });
+               
+            }
+        }
+    });
+</script>

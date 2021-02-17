@@ -7,6 +7,16 @@
 <a href="@Url.Content("~/Personas/Nuevo")">ir</a>
 
 <p>Cantidad de personas @Model.Count()</p>
+
+
+@if (ViewBag.mensaje != null)
+{
+
+
+    <div class="alert alert-success" role="alert">
+        @ViewBag.mensaje
+    </div>
+}
 <div class="row">
     @foreach (var item in Model)
     {
@@ -15,17 +25,17 @@
 
         <div class="col-lg-4 jumbotron">
             <div>
-                <a class="img-circle img-responsive"  href="@Url.Content(item.Imagen)">content</a>
+                <a class="img-circle img-responsive" href="@Url.Content(item.Imagen)">content</a>
             </div>
             <h2>Getting started</h2>
             <p>
                 @item.Id
                 @item.Nombre
-               
+
             </p>
             <img src="https://image.shutterstock.com/image-vector/pdf-icon-file-portable-text-260nw-1551599549.jpg" alt="Alternate Text" />
             <a href="@Url.Content(item.Imagen)" class="btn btn-danger btn-block">ver documento </a>
-            
+
             <p><a class="btn btn-default" href="@Url.Action("Vermas",new { id=item.Id})">Ver mas &raquo;</a></p>
 
         </div>
