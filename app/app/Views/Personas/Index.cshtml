@@ -1,0 +1,29 @@
+﻿@model IEnumerable<app.Models.Persona>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>Cantidad de personas @Model.Count()</p>
+<div class="row">
+    @foreach (var item in Model)
+    {
+
+
+
+        <div class="col-lg-4 jumbotron">
+            <h2>Getting started</h2>
+            <p>
+                @item.Id
+                @item.Nombre
+                @item.Imagen
+            </p>
+            <img src="#" alt="Alternate Text" />
+            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+
+        </div>
+
+
+    }
+</div>
