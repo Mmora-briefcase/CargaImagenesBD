@@ -1,0 +1,66 @@
+﻿@model app.Models.Persona
+
+@{
+    ViewBag.Title = "Vermas";
+}
+
+<h2>Vermas</h2>
+
+<div>
+    <h4>Persona</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Historia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Historia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Poder)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Poder)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Debilidad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Debilidad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Universo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Universo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Imagen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Imagen)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

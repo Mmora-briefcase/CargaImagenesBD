@@ -4,6 +4,7 @@
 }
 
 <h2>Index</h2>
+<input type="type" onclick="@Url.Content("~/Personas/Nuevo")" name="name" value="" />
 
 <p>Cantidad de personas @Model.Count()</p>
 <div class="row">
@@ -20,7 +21,8 @@
                 @item.Imagen
             </p>
             <img src="#" alt="Alternate Text" />
-            <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+            
+            <p><a class="btn btn-default" href="@Url.Action("Vermas",new { id=item.Id})">Ver mas &raquo;</a></p>
 
         </div>
 
